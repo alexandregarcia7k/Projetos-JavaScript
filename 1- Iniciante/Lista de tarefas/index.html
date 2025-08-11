@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de Tarefas</h1>
+    </header>
+    <section>
+        <form id="form-tarefa">
+            <input type="text" name="texto" id="nova-tarefa" placeholder="Digite a tarefa" required>
+            <button type="submit" class="btn">Adicionar</button>
+        </form>
+        <select id="lista-tarefas" multiple size="12"></select>
+        <br>
+        <button id="remover" class="btn">Remover Selecionada</button>
+        <button id="limpar-tudo" class="btn">Limpar tudo</button>
+    </section>
+    <footer>
+        <p>&copy;<strong>Alexandre Garcia</strong></p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
