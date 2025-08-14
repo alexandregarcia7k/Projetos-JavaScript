@@ -80,6 +80,34 @@
             </div>
 
             <div class="kanban-cards">
+                <div class="kanban-card" draggable="true">
+                    <div class="badge">
+                        <span>
+                            Alta prioridade
+                        </span>
+                    </div>
+                    <p class="card-title">
+                        Revisar documento do projeto
+                    </p>
+
+                    <div class="card-infos">
+                        <div class="card-icons">
+                            <p>
+                                <i class="fa-regular fa-comment"></i>
+                                1
+                            </p>
+
+                            <p>
+                                <i class="fa-solid fa-paperclip"></i>
+                                1
+                            </p>
+                        </div>
+
+                        <div class="user">
+                            <img src="/2- Intermediario/Kanban/images/avatar3.svg" alt="avatar" draggable="false">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
    </main>
@@ -117,6 +145,21 @@
             </form>
         </div>
 
+   </div>
+   <div id="deleteConfirmModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close-delete-modal">&times;</span>
+        <h2>Excluir Card</h2>
+        <p>Tem certeza que deseja excluir este card?</p>
+        <div class="btn-delete-confirm">
+            <button id="confirmDelete" class="btn-danger">
+                Excluir
+            </button>
+            <button id="cancelDelete" class="btn-secondary">
+                Cancelar
+            </button>
+        </div>
+    </div>
    </div>
 <script src="script.js"></script>
 </body>

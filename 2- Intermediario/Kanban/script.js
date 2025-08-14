@@ -1,6 +1,7 @@
 let selectedPriority = '';
 let selectedAvatar = '';
 let currentColumnTarget = null;
+let cardToDelete = null;
 
 
 
@@ -39,6 +40,19 @@ document.querySelectorAll('.kanban-cards').forEach(column => {
         
     })
 })
+
+document.addEventListener('click', e => {
+    const menuBtn = e.target.closest('.btn-ellip button');
+
+    if (menuBtn) {
+        const menu = menuBtn.nextElementSibling;
+
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        return;
+    }
+
+    document.querySelectorAll(".btn-edit").forEach(menu => menu.style.display = "none");
+});
 
 
 function getDragAfterElement(container, y) {
@@ -79,12 +93,30 @@ function loadBoard() {
             card.classList.add('kanban-card')
             card.setAttribute('draggable', 'true');
             card.innerHTML =  `
+             <div class="badge-row"> 
                 ${cardData.badge}
+                <div class="btn-ellip">
+                    <button>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </button>
+                    <div class="btn-edit" style="display:none;">
+                        <button>
+                            <i class="fa-solid fa-pencil"></i>
+                            
+                        </button>
+                        <button>
+                            <i class="fa-solid fa-trash-can"></i>
+                            
+                        </button>
+                    </div>
+                </div>
+                </div>
                 <p class="card-title">${cardData.title}</p>
                 <div class="card-infos">
                     ${cardData.icons}
                     ${cardData.user}
                 </div>
+                
             `;
             column.appendChild(card);
             reapplyDragEvents();
@@ -109,7 +141,7 @@ function openNewCardForm() {
     if(!title) return;
 
     const comments = prompt('Quantidade de comentarios', '0');
-    const attachements = prompt('Quantidade de anexos', '0');
+    const attachments = prompt('Quantidade de anexos', '0');
 
     const avatar = prompt('URL da imagem de avatar:', './images/avatar.svg');
 
@@ -121,9 +153,25 @@ function openNewCardForm() {
     newCard.classList.add('kanban-card');
     newCard.setAttribute('draggable', 'true');
     newCard.innerHTML = `
+    <div class="badge-row"> 
         <div class="badge ${badgeClass}">
             <span>${priority.charAt(0).toUpperCase() + priority.slice(1)} prioridade</span>
         </div>
+        <div class="btn-ellip">
+                <button>
+                    <i class="fa-solid fa-ellipsis"></i>
+                </button>
+                    <div class="btn-edit">
+                        <button>
+                            <i class="fa-solid fa-pencil"></i>
+                            
+                        </button>
+                        <button>
+                            <i class="fa-solid fa-trash-can"></i>
+                            
+                        </button>
+                 </div>
+            </div>
         <p class="card-title">${title}</p>
         <div class="card-infos">
             <div class="card-icons">
@@ -134,8 +182,8 @@ function openNewCardForm() {
                 <img src="${avatar}" alt="avatar">
             </div>
         </div>
+        </div>
     `;
-
     columnElement.appendChild(newCard);
     saveBoard();
                 
@@ -224,6 +272,8 @@ document.addEventListener('submit', e => {
 
   currentColumnTarget.appendChild(newCard);
   saveBoard();
+  loadBoard();
+  
 
   document.getElementById('newCardModal').style.display = 'none';
   resetModalForm();
@@ -238,7 +288,30 @@ function resetModalForm() {
   selectedPriority = '';
   selectedAvatar = '';
 }
-
-
+document.addEventListener('click', e => {
+    const deleteBtn = e.target.closest('.btn-edit .fa-trash-can');
+    if(!deleteBtn) return;
+    
+    cardToDelete = deleteBtn.closest('.kanban-card');
+    if(!cardToDelete) return;   
+    document.getElementById('deleteConfirmModal').style.display='flex';
+    
+});
+document.querySelector('.close-delete-modal').addEventListener('click', () => {
+    document.getElementById('deleteConfirmModal').style.display = 'none';
+    cardToDelete = null;
+})
+document.getElementById('cancelDelete').addEventListener('click', () => {
+    document.getElementById('deleteConfirmModal').style.display = 'none';
+    cardToDelete = null;
+})
+document.getElementById('confirmDelete').addEventListener('click', () => {
+    if(cardToDelete) {
+        cardToDelete.remove();
+        saveBoard();
+    }
+    document.getElementById('deleteConfirmModal').style.display = 'none';
+    cardToDelete = null;
+})
 
 window.addEventListener('load', loadBoard,);

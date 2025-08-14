@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 *{
@@ -152,7 +153,7 @@ body{
     opacity: 0.5;
 }
 .cards-hover {
-    background-color: #eaeffa;
+    background-color: #3a3c3f;
     border-radius: 8px;
 }
 label.Prioridade{
@@ -187,6 +188,8 @@ label.Prioridade{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.39);
     align-items: flex-start;
     justify-content: center;
+    text-align: center;
+    
 }
 .modal-content h2, label {
     text-align: center;
@@ -283,6 +286,97 @@ input::-webkit-inner-spin-button {
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-input[type=number] {
-    -moz-appearance:textfield;
+/***** MENU DROPDOWN *****/
+.btn-ellip {
+    position: relative;
+    display: inline-block;
+}
+
+.btn-ellip button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #ffffff67;
+    padding: 4px
+}
+
+.btn-edit {
+    display: none;
+    position: absolute;
+    top: -35%;
+    right: 80%;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0.0.0.0.2);
+    z-index: 1000;
+    flex-direction: column;
+    padding: 4px 0;
+}
+.btn-edit button {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;    
+    font-size: 14px;
+    color: black;
+}
+
+.btn-edit button:hover {
+    background: #4e4e4e50;
+    border-radius: 100%;
+}
+
+.btn button i{
+    font-size: 10px;
+}   
+
+.badge-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 42px;
+    text-align: center;
+    
+}
+.btn-danger {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+}
+.btn-secondary {
+    background-color: #ccc;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 10px;
+  
+}
+.btn-delete-confirm {
+    text-align: center;
+    gap: 30px;
+    margin-top: 1.5rem;
+}
+
+.close-delete-modal {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+    z-index: 10;
 }
