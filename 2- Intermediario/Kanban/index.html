@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadro Kanban</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+   <main class="kanban">
+    <!--Column 1-->
+        <div class="kanban-column" data-id="1">
+            <div class="kanban-title">
+                <h2>
+                    Pendente
+                </h2>
+                <button class="add-card" aria-label="Adicionar cartao">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="kanban-cards">
+
+            </div>
+        </div>
+    <!--Column 2-->
+        <div class="kanban-column" data-id="2">
+            <div class="kanban-title">
+                <h2>
+                    Em front-end
+                </h2>
+                <button class="add-card" aria-label="Adicionar cartao">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="kanban-cards">
+                
+            </div>
+        </div>
+    <!--Column 3-->
+        <div class="kanban-column" data-id="3">
+            <div class="kanban-title">
+                <h2>
+                    Em back-end
+                </h2>
+                <button class="add-card" aria-label="Adicionar cartao">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="kanban-cards">
+                
+            </div>
+        </div>
+    <!--Column 4-->
+        <div class="kanban-column" data-id="4">
+            <div class="kanban-title">
+                <h2>
+                    Em teste
+                </h2>
+                <button class="add-card" aria-label="Adicionar cartao">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="kanban-cards">
+            </div>
+        </div>
+    <!--Column 5-->
+        <div class="kanban-column" data-id="5">
+            <div class="kanban-title">
+                <h2>
+                    Concluido
+                </h2>
+                <button class="add-card" aria-label="Adicionar cartao">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="kanban-cards">
+            </div>
+        </div>
+   </main>
+   <div id="newCardModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span><br>
+            <h2>Adicionar Nova tarefa</h2>
+            <form id="newCardForm">
+                <label class="Prioridade">Prioridades</label> 
+                <div class="priority-options">
+                    <button type="button" data-priority="alta" class="priority-btn high">Alta</button>
+                    <button type="button" data-priority="media" class="priority-btn medium">Medio</button>
+                    <button type="button" data-priority="baixa" class="priority-btn low">Baixo</button>
+                </div>
+                <div id="inputs">
+                    <label for="taskTitle">Título</label><br>
+                    <input type="text" id="taskTitle" required>
+                    <label for="taskComments">Comentarios</label><br>
+                    <input type="number" id="taskComments" min="0">
+                    <label for="taskAttachments">Anexos</label><br>
+                    <input type="number" id="taskAttachments" min="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    
+                </div>
+                <div class="avatar-top">
+                    <label>Escolha um avatar</label>
+                </div>
+                <div class="avatar-list">
+                    
+                    <img src="./images/avatar.svg" alt="avatar" class="avatar-option" draggable="false">
+                    <img src="./images/avatar2.svg" alt="avatar" class="avatar-option" draggable="false">
+                    <img src="./images/avatar3.svg" alt="avatar" class="avatar-option" draggable="false">
+                </div>
+                
+                <button type="submit" class="btn-add-task">Adicionar</button>
+            </form>
+        </div>
+
+   </div>
+<script src="script.js"></script>
+</body>
+</html>

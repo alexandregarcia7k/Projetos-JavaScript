@@ -1,0 +1,288 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #4a4b53, #2f3338);
+}
+
+.kanban {
+    display: flex;
+    gap: 14px;
+    padding: 24px;
+    width: 100%;
+    height: 90vh;
+    overflow-x: auto;
+}
+
+.kanban-column {
+    display: flex;  
+    flex-direction: column;
+    gap: 18px;
+    height: 100%;
+    overflow-y: auto;
+    background-color: #1c1e20;
+    border-radius: 12px;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    overflow: hidden;
+    position: relative;
+    min-width: 252px;
+}
+
+.kanban-column::after {
+    position: absolute;
+    content: '';
+    height: 5px;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.kanban-column[data-id="1"]::after {
+    background-color: #d573b6;
+}
+.kanban-column[data-id="2"]::after {
+    background-color: #fea065;
+}
+.kanban-column[data-id="3"]::after {
+    background-color: #fed565;
+}   
+.kanban-column[data-id="4"]::after {
+    background-color: #92a5fb ;
+}
+.kanban-column[data-id="5"]::after {
+    background-color: #60edbc;
+}
+.kanban-title {
+    justify-content: space-between;
+    display: flex;
+}
+.kanban-title h2 {
+    font-size: 18px;
+    color: #4b5563;
+    font-weight: 600;
+}
+.add-card {
+    color: #4b5563;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+.kanban-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden; 
+}
+.kanban-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: #535353;
+    border-radius: 14px;
+    padding: 10px;
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+.badge {
+    color: #ffffff;
+    background-color: #a5b4fc;
+    width: fit-content;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+
+}
+.badge.high {
+        background-color: #ca1e1ea1;
+}
+.badge.medium {
+    background-color: #fea065c9;
+}
+.badge.low {
+    background-color: #92fbbeb9;
+}
+.card-infos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-icons {
+    display: flex;
+    gap: 18px;
+}
+.card-icons i {
+    color: #a8a8aa;
+}
+.user img {
+    width: 42px;
+    height: 42px;
+    border-radius: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-radius: 8px;
+
+}
+*::-webkit-scrollbar-thumb {
+    background-color: #334155;
+    border-radius: 20px;
+}
+.dragging {
+    opacity: 0.5;
+}
+.cards-hover {
+    background-color: #eaeffa;
+    border-radius: 8px;
+}
+label.Prioridade{
+    text-align: center;
+    display: block;
+    padding-bottom: 8px;
+    font-size: 20px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(12, 11, 11, 0.281);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    
+
+}
+.modal-content {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 450px;
+    position: absolute;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.39);
+    align-items: flex-start;
+    justify-content: center;
+}
+.modal-content h2, label {
+    text-align: center;
+}
+
+.close-modal {
+    justify-content: space-between right;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 16rem;
+    position: absolute;
+}
+.priority-options {
+    display: flex;  
+    gap: 15px;
+    margin: 5px 0;
+    text-align: center;
+    justify-content: center;
+}
+.priority-btn {
+    border-radius: 10px;
+    padding: 10px 40px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+.priority-btn:hover {
+    filter: brightness(0.9);
+}
+.priority-btn.high { background: #ca1e1ea1;}
+.priority-btn.medium { background: #fea065c9;}
+.priority-btn.low { background: #92fbbeb9;}
+.priority-btn.active { outline: 1px solid #000000ce;}
+.avatar-top {
+    text-align: center;
+}
+.avatar-list {
+    display: flex;
+    gap: 30px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.avatar-option {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+
+}
+.avatar-option.selected {
+    border: 2px solid #7c7b7b;
+}
+.btn-add-task {
+    background: rgba(0, 0, 255, 0.658);
+    border-radius: 80%;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-add-task:hover{
+    filter: brightness(0.9);
+}
+#inputs {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border: none;
+    font-size: 20px;
+    
+}
+input {
+  color: #000000;
+  font-size: 15px;
+  width: 100%;
+  padding: 10px 5px 5px;
+  background-color: #00000011;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
